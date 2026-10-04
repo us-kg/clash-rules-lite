@@ -111,9 +111,7 @@ proxy-groups:
     tolerance: 50
   - {name: Apple, type: select, proxies: [Proxy, Auto, DIRECT]}
   - {name: Microsoft, type: select, proxies: [Proxy, Auto, DIRECT]}
-  - {name: Google, type: select, proxies: [Proxy, Auto, DIRECT]}
   - {name: Telegram, type: select, proxies: [Proxy, Auto, DIRECT]}
-  - {name: AI, type: select, proxies: [Proxy, Auto, DIRECT]}
   - {name: School, type: select, proxies: [Proxy, Auto, DIRECT]}
   - {name: ADblock, type: select, proxies: [REJECT, DIRECT]}
 
@@ -170,11 +168,7 @@ rules:
   - RULE-SET,lite-edu,School
   - RULE-SET,lite-microsoft,Microsoft
   - GEOSITE,apple,Apple
-  - GEOSITE,google,Google
-  - GEOSITE,youtube,Google
   - GEOSITE,telegram,Telegram
-  - GEOSITE,openai,AI
-  - GEOSITE,github,Proxy
   # Proxy / direct splits.
   - RULE-SET,lite-proxy,Proxy
   - RULE-SET,lite-direct,DIRECT
