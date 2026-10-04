@@ -142,7 +142,4 @@ rules:
   # Proxy / direct splits.
   - RULE-SET,lite-proxy,Proxy
   - RULE-SET,lite-direct,DIRECT
-  - GEOSITE,cn,DIRECT
-  - GEOIP,CN,DIRECT
-  - GEOSITE,geolocation-!cn,Proxy
   - MATCH,Proxy
