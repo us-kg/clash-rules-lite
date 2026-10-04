@@ -19,7 +19,7 @@ Inspired by [zhanyeye/clash-rules-lite](https://github.com/zhanyeye/clash-rules-
 
 ## Config template
 
-`clash-template.yaml` — a generic annotated Clash config that consumes the rule sets above via jsDelivr CDN. Fill in your subscription URL and import it.
+`clash-lite.yaml` — a generic annotated Clash config that consumes the rule sets above via jsDelivr CDN. Fill in your subscription URL and import it.
 
 ## Usage
 

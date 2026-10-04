@@ -19,7 +19,7 @@
 
 ## 配置模板
 
-`clash-template.yaml` —— 通用注释版 Clash 配置，通过 jsDelivr CDN 引用上面的规则集。填入订阅链接即可导入使用。
+`clash-lite.yaml` —— 通用注释版 Clash 配置，通过 jsDelivr CDN 引用上面的规则集。填入订阅链接即可导入使用。
 
 ## 使用
 
