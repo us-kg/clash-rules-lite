@@ -12,7 +12,7 @@ Inspired by [zhanyeye/clash-rules-lite](https://github.com/zhanyeye/clash-rules-
 | `direct-rules.txt` | Domains that go direct | Clash classical |
 | `microsoft-rules.txt` | Microsoft services | Clash classical |
 | `blacklist-rules.txt` | Blocked categories | Clash classical |
-| `edu.yaml` | School & education domains (jjc.edu, lanecc.edu, Microsoft 365, Google Workspace…) | Clash classical |
+| `edu-rules.txt` | School & education domains (jjc.edu, lanecc.edu, Microsoft 365, Google Workspace…) | Clash classical |
 
 ## Usage
 
