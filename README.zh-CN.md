@@ -15,6 +15,10 @@
 | `adslite-rules.txt` | 轻量广告/追踪拦截（hagezi PRO mini，约 6 万条） | Clash classical |
 | `edu-rules.txt` | 学校/教育域名（jjc.edu、lanecc.edu、Microsoft 365、Google Workspace…） | Clash classical |
 
+## 配置模板
+
+`clash-template.yaml` —— 通用注释版 Clash 配置，通过 jsDelivr CDN 引用上面的规则集。填入订阅链接即可导入使用。
+
 ## 使用
 
 在 Clash 配置里用 `rule-provider` 引用发布后的文件：

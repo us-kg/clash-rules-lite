@@ -15,6 +15,10 @@ Inspired by [zhanyeye/clash-rules-lite](https://github.com/zhanyeye/clash-rules-
 | `adslite-rules.txt` | Lightweight ad/tracker blocklist (hagezi PRO mini, ~60k) | Clash classical |
 | `edu-rules.txt` | School & education domains (jjc.edu, lanecc.edu, Microsoft 365, Google Workspace…) | Clash classical |
 
+## Config template
+
+`clash-template.yaml` — a generic annotated Clash config that consumes the rule sets above via jsDelivr CDN. Fill in your subscription URL and import it.
+
 ## Usage
 
 Reference the published files as `rule-provider` in your Clash config:
