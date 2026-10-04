@@ -10,7 +10,6 @@
 |---|---|---|
 | `proxy-rules.txt` | 走代理的域名 | Clash classical |
 | `direct-rules.txt` | 直连域名 | Clash classical |
-| `blacklist-rules.txt` | 屏蔽类别 | Clash classical |
 | `adslite-rules.txt` | 轻量广告/追踪拦截（hagezi PRO mini，约 6 万条） | Clash classical |
 | `edu-rules.txt` | 学校/教育域名（jjc.edu、lanecc.edu、Microsoft 365、Google Workspace…） | Clash classical |
 

@@ -14,7 +14,6 @@
 #   Rule files (us-kg/clash-rules-lite, auto-published via CDN):
 #     proxy-rules.txt     Domains that go through the proxy
 #     direct-rules.txt    Domains that go direct
-#     blacklist-rules.txt Blocked categories
 #     edu-rules.txt       School & education domains (-> School group, incl. Microsoft 365)
 #     adslite-rules.txt   Lightweight ad/tracker blocklist (~65k)
 #     backcn-rules.txt    BackCN: mainland-locked services (-> BackCN group, e.g. 抖音)
@@ -135,12 +134,6 @@ rule-providers:
     url: https://cdn.jsdelivr.net/gh/us-kg/clash-rules-lite@release/direct-rules.txt
     path: ./ruleset/lite-direct.yaml
     interval: 86400
-  lite-blacklist:
-    type: http
-    behavior: classical
-    url: https://cdn.jsdelivr.net/gh/us-kg/clash-rules-lite@release/blacklist-rules.txt
-    path: ./ruleset/lite-blacklist.yaml
-    interval: 86400
   lite-edu:
     type: http
     behavior: classical
@@ -166,8 +159,7 @@ rules:
   - IP-CIDR,10.0.0.0/8,DIRECT,no-resolve
   - IP-CIDR,172.16.0.0/12,DIRECT,no-resolve
   - IP-CIDR,127.0.0.0/8,DIRECT,no-resolve
-  # Blocked categories and ads.
-  - RULE-SET,lite-blacklist,REJECT
+  # Block ads.
   - RULE-SET,lite-adslite,ADblock
   # Service groups.
   - RULE-SET,lite-edu,School
