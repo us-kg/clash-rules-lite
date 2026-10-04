@@ -2,12 +2,10 @@
 # us-kg/clash-rules-lite — Stash (iOS) Config
 # https://github.com/us-kg/clash-rules-lite
 #
-# Stash is Clash Premium core on iOS. This config is adapted from
-# clash-lite.yaml: TUN removed (iOS uses the system VPN tunnel instead),
-# desktop-only options stripped, iOS notes added.
+# Adapted for Stash (Clash Premium core on iOS).
 #
-# Rule sets are shared with clash-lite.yaml — same lightweight,
-# hand-maintained files, auto-published via jsDelivr CDN:
+# Rule sets: lightweight, hand-maintained in us-kg/clash-rules-lite,
+# auto-published via jsDelivr CDN:
 #     proxy-rules.txt     Domains that go through the proxy
 #     direct-rules.txt    Domains that go direct (TikTok, YouTube…)
 #     edu-rules.txt       School & education domains (-> School group)
@@ -25,45 +23,30 @@
 #   The BackCN group below is where your return-to-China nodes go.
 #   Add a second proxy-provider (or manual proxies) with China nodes,
 #   then select them in the BackCN group. Douyin traffic will follow.
-#
-# NOTE: iOS does not allow per-app VPN split outside Stash. All traffic
-# goes through the Stash VPN tunnel when enabled; routing is decided
-# by the rules below.
 # ======================================================================
 
-# Ports are managed by Stash itself on iOS — no need to set mixed-port here.
-ipv6: false
 mode: rule
 log-level: info
-tcp-concurrent: true
-global-client-fingerprint: chrome
 
-# GeoData: Stash (Clash Premium) loads GeoIP/GeoSite from its built-in
-# databases — no geodata-mode needed (that's mihomo-only).
+ipv6: false
+tcp-concurrent: true
 
 profile:
   store-selected: true
-  store-fake-ip: true
 
-# Traffic sniffing: detect real destination domain for correct routing.
-# Works on iOS — helps with apps that hardcode IPs.
-sniffer:
+tun:
   enable: true
-  parse-pure-ip: true
-  sniff:
-    TLS:
-      ports: [443, 8443]
-    HTTP:
-      ports: [80, 8080-8880]
-      override-destination: true
+  stack: mixed
+  auto-route: true
+  auto-detect-interface: true
+  dns-hijack:
+    - any:53
+    - tcp://any:53
 
-# DNS: Stash resolves through the VPN tunnel on iOS.
-# fake-ip keeps routing fast; the filter list avoids breaking
-# captive portals and connectivity checks.
 dns:
   enable: true
   ipv6: false
-  listen: :1053
+  listen: :53
   enhanced-mode: fake-ip
   fake-ip-range: 198.18.0.1/16
   fake-ip-filter:
