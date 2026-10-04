@@ -20,6 +20,7 @@
 ## 配置模板
 
 `clash-lite.yaml` —— 通用注释版 Clash 配置，通过 jsDelivr CDN 引用上面的规则集。填入订阅链接即可导入使用。
+`stash-lite.yaml` —— Stash（iOS）专用版：去掉 TUN，iOS 适用注释，规则集相同。
 
 ## 使用
 

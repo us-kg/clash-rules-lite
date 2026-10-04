@@ -20,6 +20,7 @@ Inspired by [zhanyeye/clash-rules-lite](https://github.com/zhanyeye/clash-rules-
 ## Config template
 
 `clash-lite.yaml` — a generic annotated Clash config that consumes the rule sets above via jsDelivr CDN. Fill in your subscription URL and import it.
+`stash-lite.yaml` — Stash (iOS) variant: no TUN, iOS-specific notes, same rule sets.
 
 ## Usage
 

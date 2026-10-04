@@ -1,0 +1,176 @@
+# ======================================================================
+# us-kg/clash-rules-lite — Stash (iOS) Config
+# https://github.com/us-kg/clash-rules-lite
+#
+# Stash is Clash Premium core on iOS. This config is adapted from
+# clash-lite.yaml: TUN removed (iOS uses the system VPN tunnel instead),
+# desktop-only options stripped, iOS notes added.
+#
+# Rule sets are shared with clash-lite.yaml — same lightweight,
+# hand-maintained files, auto-published via jsDelivr CDN:
+#     proxy-rules.txt     Domains that go through the proxy
+#     direct-rules.txt    Domains that go direct (TikTok, YouTube…)
+#     edu-rules.txt       School & education domains (-> School group)
+#     adslite-rules.txt   Lightweight ad/tracker blocklist (~65k)
+#     backcn-rules.txt    BackCN: mainland-locked services (-> BackCN group, e.g. 抖音)
+#
+# QUICK START (iOS)
+#   1. In Stash: Settings → Config → Download from URL, paste:
+#      https://cdn.jsdelivr.net/gh/us-kg/clash-rules-lite@release/stash-lite.yaml
+#      (Or import this file directly via Files / AirDrop.)
+#   2. Replace "https://your-subscription-url" below with your own link.
+#   3. Enable the VPN toggle in Stash and allow the VPN permission prompt.
+#
+# BACKCN SETUP
+#   The BackCN group below is where your return-to-China nodes go.
+#   Add a second proxy-provider (or manual proxies) with China nodes,
+#   then select them in the BackCN group. Douyin traffic will follow.
+#
+# NOTE: iOS does not allow per-app VPN split outside Stash. All traffic
+# goes through the Stash VPN tunnel when enabled; routing is decided
+# by the rules below.
+# ======================================================================
+
+# Ports are managed by Stash itself on iOS — no need to set mixed-port here.
+ipv6: false
+mode: rule
+log-level: info
+tcp-concurrent: true
+global-client-fingerprint: chrome
+
+geodata-mode: true
+geox-url:
+  geoip: https://mirror.ghproxy.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip-lite.dat
+  geosite: https://mirror.ghproxy.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geosite.dat
+  mmdb: https://mirror.ghproxy.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/country-lite.mmdb
+
+profile:
+  store-selected: true
+  store-fake-ip: true
+
+# Traffic sniffing: detect real destination domain for correct routing.
+# Works on iOS — helps with apps that hardcode IPs.
+sniffer:
+  enable: true
+  parse-pure-ip: true
+  sniff:
+    TLS:
+      ports: [443, 8443]
+    HTTP:
+      ports: [80, 8080-8880]
+      override-destination: true
+
+# DNS: Stash resolves through the VPN tunnel on iOS.
+# fake-ip keeps routing fast; the filter list avoids breaking
+# captive portals and connectivity checks.
+dns:
+  enable: true
+  ipv6: false
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  fake-ip-filter:
+    - '*.lan'
+    - '*.local'
+    - '*.msftconnecttest.com'
+    - '*.msftncsi.com'
+    - stun.*
+    - '*.apple.com'   # iOS services: keep real IP to avoid push/cert issues
+  nameserver:
+    - 223.5.5.5
+    - 119.29.29.29
+  fallback:
+    - 1.1.1.1
+    - 8.8.8.8
+
+# ======================= ADD YOUR NODES HERE =======================
+# Option A: use a subscription (recommended). Replace the URL below.
+# Option B: define proxies manually (examples commented out).
+# Never commit real credentials or subscription URLs to a public repo.
+# ======================================================================
+proxy-providers:
+  Subscription:
+    type: http
+    url: "https://your-subscription-url"   # <-- replace with your own
+    interval: 3600
+    path: ./proxies/subscription.yaml
+    health-check:
+      enable: true
+      interval: 600
+      url: http://cp.cloudflare.com/generate_204
+
+# proxies:
+  # --- Shadowsocks example ---
+  # - {name: HK-SS, type: ss, server: YOUR_SERVER, port: 8388,
+  #    cipher: aes-256-gcm, password: YOUR_PASSWORD, udp: true}
+
+proxy-groups:
+  - name: Proxy
+    type: select
+    include-all: true
+    proxies: [DIRECT]
+  - name: Auto
+    type: url-test
+    include-all: true
+    url: http://cp.cloudflare.com/generate_204
+    interval: 600
+    tolerance: 50
+  - {name: Apple, type: select, proxies: [Proxy, Auto, DIRECT]}
+  - {name: Telegram, type: select, proxies: [Proxy, Auto, DIRECT]}
+  - {name: School, type: select, proxies: [Proxy, Auto, DIRECT]}
+  - {name: BackCN, type: select, proxies: [Proxy, Auto, DIRECT]}
+  - {name: ADblock, type: select, proxies: [REJECT, DIRECT]}
+
+# Rule sets: lightweight, hand-maintained in us-kg/clash-rules-lite.
+# Published to jsDelivr CDN on every push; refresh interval 24h.
+rule-providers:
+  lite-proxy:
+    type: http
+    behavior: classical
+    url: https://cdn.jsdelivr.net/gh/us-kg/clash-rules-lite@release/proxy-rules.txt
+    path: ./ruleset/lite-proxy.yaml
+    interval: 86400
+  lite-direct:
+    type: http
+    behavior: classical
+    url: https://cdn.jsdelivr.net/gh/us-kg/clash-rules-lite@release/direct-rules.txt
+    path: ./ruleset/lite-direct.yaml
+    interval: 86400
+  lite-edu:
+    type: http
+    behavior: classical
+    url: https://cdn.jsdelivr.net/gh/us-kg/clash-rules-lite@release/edu-rules.txt
+    path: ./ruleset/lite-edu.yaml
+    interval: 86400
+  lite-adslite:
+    type: http
+    behavior: classical
+    url: https://cdn.jsdelivr.net/gh/us-kg/clash-rules-lite@release/adslite-rules.txt
+    path: ./ruleset/lite-adslite.yaml
+    interval: 86400
+  lite-backcn:
+    type: http
+    behavior: classical
+    url: https://cdn.jsdelivr.net/gh/us-kg/clash-rules-lite@release/backcn-rules.txt
+    path: ./ruleset/lite-backcn.yaml
+    interval: 86400
+
+rules:
+  # Local networks first — never proxied.
+  - IP-CIDR,192.168.0.0/16,DIRECT,no-resolve
+  - IP-CIDR,10.0.0.0/8,DIRECT,no-resolve
+  - IP-CIDR,172.16.0.0/12,DIRECT,no-resolve
+  - IP-CIDR,127.0.0.0/8,DIRECT,no-resolve
+  # Block ads.
+  - RULE-SET,lite-adslite,ADblock
+  # Service groups.
+  - RULE-SET,lite-edu,School
+  - RULE-SET,lite-backcn,BackCN
+  - GEOSITE,apple,Apple
+  - GEOSITE,telegram,Telegram
+  # Proxy / direct splits.
+  - RULE-SET,lite-proxy,Proxy
+  - RULE-SET,lite-direct,DIRECT
+  - GEOSITE,cn,DIRECT
+  - GEOIP,CN,DIRECT
+  - GEOSITE,geolocation-!cn,Proxy
+  - MATCH,Proxy
