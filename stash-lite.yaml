@@ -95,35 +95,35 @@ proxy-groups:
 # Rule sets: lightweight, hand-maintained in us-kg/clash-rules-lite.
 # Published to jsDelivr CDN on every push; refresh interval 24h.
 rule-providers:
-  lite-proxy:
+  Proxy:
     type: http
     behavior: classical
     url: https://cdn.jsdelivr.net/gh/us-kg/clash-rules-lite@release/proxy-rules.txt
-    path: ./ruleset/lite-proxy.yaml
+    path: ./ruleset/Proxy.yaml
     interval: 86400
-  lite-direct:
+  Direct:
     type: http
     behavior: classical
     url: https://cdn.jsdelivr.net/gh/us-kg/clash-rules-lite@release/direct-rules.txt
-    path: ./ruleset/lite-direct.yaml
+    path: ./ruleset/Direct.yaml
     interval: 86400
-  lite-edu:
+  Edu:
     type: http
     behavior: classical
     url: https://cdn.jsdelivr.net/gh/us-kg/clash-rules-lite@release/edu-rules.txt
-    path: ./ruleset/lite-edu.yaml
+    path: ./ruleset/Edu.yaml
     interval: 86400
-  lite-adslite:
+  ADblock:
     type: http
     behavior: classical
     url: https://cdn.jsdelivr.net/gh/us-kg/clash-rules-lite@release/adslite-rules.txt
-    path: ./ruleset/lite-adslite.yaml
+    path: ./ruleset/ADblock.yaml
     interval: 86400
-  lite-backcn:
+  BackCN:
     type: http
     behavior: classical
     url: https://cdn.jsdelivr.net/gh/us-kg/clash-rules-lite@release/backcn-rules.txt
-    path: ./ruleset/lite-backcn.yaml
+    path: ./ruleset/BackCN.yaml
     interval: 86400
 
 rules:
@@ -133,15 +133,15 @@ rules:
   - IP-CIDR,172.16.0.0/12,DIRECT,no-resolve
   - IP-CIDR,127.0.0.0/8,DIRECT,no-resolve
   # Block ads.
-  - RULE-SET,lite-adslite,ADblock
+  - RULE-SET,ADblock,ADblock
   # Service groups.
-  - RULE-SET,lite-edu,School
-  - RULE-SET,lite-backcn,BackCN
+  - RULE-SET,Edu,School
+  - RULE-SET,BackCN,BackCN
   - GEOSITE,apple,Apple
   - GEOSITE,telegram,Telegram
   # Proxy / direct splits.
-  - RULE-SET,lite-proxy,Proxy
-  - RULE-SET,lite-direct,DIRECT
+  - RULE-SET,Proxy,Proxy
+  - RULE-SET,Direct,DIRECT
   - GEOSITE,cn,DIRECT
   - GEOIP,CN,DIRECT
   - MATCH,DIRECT
