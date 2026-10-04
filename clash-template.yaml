@@ -17,6 +17,12 @@
 #     blacklist-rules.txt Blocked categories
 #     edu-rules.txt       School & education domains (-> School group, incl. Microsoft 365)
 #     adslite-rules.txt   Lightweight ad/tracker blocklist (~65k)
+#     backcn-rules.txt    BackCN: mainland-locked services (-> BackCN group, e.g. 抖音)
+#
+# BACKCN SETUP
+#   The BackCN group below is where your return-to-China nodes go.
+#   Add a second proxy-provider (or manual proxies) with China nodes,
+#   then select them in the BackCN group. Douyin traffic will follow.
 # ======================================================================
 
 mixed-port: 7890
@@ -111,6 +117,7 @@ proxy-groups:
   - {name: Apple, type: select, proxies: [Proxy, Auto, DIRECT]}
   - {name: Telegram, type: select, proxies: [Proxy, Auto, DIRECT]}
   - {name: School, type: select, proxies: [Proxy, Auto, DIRECT]}
+  - {name: BackCN, type: select, proxies: [Proxy, Auto, DIRECT]}
   - {name: ADblock, type: select, proxies: [REJECT, DIRECT]}
 
 # Rule sets: lightweight, hand-maintained in us-kg/clash-rules-lite.
@@ -146,6 +153,12 @@ rule-providers:
     url: https://cdn.jsdelivr.net/gh/us-kg/clash-rules-lite@release/adslite-rules.txt
     path: ./ruleset/lite-adslite.yaml
     interval: 86400
+  lite-backcn:
+    type: http
+    behavior: classical
+    url: https://cdn.jsdelivr.net/gh/us-kg/clash-rules-lite@release/backcn-rules.txt
+    path: ./ruleset/lite-backcn.yaml
+    interval: 86400
 
 rules:
   # Local networks first — never proxied.
@@ -158,6 +171,7 @@ rules:
   - RULE-SET,lite-adslite,ADblock
   # Service groups.
   - RULE-SET,lite-edu,School
+  - RULE-SET,lite-backcn,BackCN
   - GEOSITE,apple,Apple
   - GEOSITE,telegram,Telegram
   # Proxy / direct splits.
