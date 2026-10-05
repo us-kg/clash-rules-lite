@@ -12,10 +12,7 @@
 | `direct-rules.txt` | 直连域名 | Clash classical |
 | `adslite-rules.txt` | 轻量广告/追踪拦截（hagezi PRO mini，约 6 万条） | Clash classical |
 | `edu-rules.txt` | 学校/教育域名（jjc.edu、lanecc.edu、Microsoft 365、Google Workspace…） | Clash classical |
-
-## BackCN
-
-| `backcn-rules.txt` | 需要中国 IP 的锁区服务（目前是抖音） | Clash classical |
+| `loc-cn-rules.txt` | 直连的中国大陆服务域名 | Clash classical |
 
 ## 配置模板
 

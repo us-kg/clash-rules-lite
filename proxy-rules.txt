@@ -205,7 +205,6 @@ payload:
   - DOMAIN-SUFFIX,skyking.com.tw
   - DOMAIN,hamifans.emome.net
   - DOMAIN-SUFFIX,tver.jp
-  - DOMAIN,edge.api.brightcove.com
   - DOMAIN-SUFFIX,viu.com
   - DOMAIN-SUFFIX,viu.tv
   - DOMAIN,api.viu.now.com

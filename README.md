@@ -12,10 +12,7 @@ Inspired by [zhanyeye/clash-rules-lite](https://github.com/zhanyeye/clash-rules-
 | `direct-rules.txt` | Domains that go direct | Clash classical |
 | `adslite-rules.txt` | Lightweight ad/tracker blocklist (hagezi PRO mini, ~60k) | Clash classical |
 | `edu-rules.txt` | School & education domains (jjc.edu, lanecc.edu, Microsoft 365, Google Workspace…) | Clash classical |
-
-## BackCN
-
-| `backcn-rules.txt` | Mainland-locked services needing a China IP (currently 抖音) | Clash classical |
+| `loc-cn-rules.txt` | Mainland China services that go direct | Clash classical |
 
 ## Config template
 
