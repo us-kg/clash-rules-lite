@@ -11,8 +11,8 @@
 | `proxy-rules.txt` | 走代理的域名 | Clash classical |
 | `direct-rules.txt` | 直连域名 | Clash classical |
 | `adslite-rules.txt` | 轻量广告/追踪拦截（hagezi PRO mini，约 6 万条） | Clash classical |
-| `edu-rules.txt` | 学校/教育域名（jjc.edu、lanecc.edu、Microsoft 365、Google Workspace…） | Clash classical |
-| `loc-cn`（via [dmulle12/rules](https://github.com/dmulle12/rules/raw/rel/loc-cn.yaml)） | 直连的中国大陆服务域名，每日自动更新 | Clash domain |
+| `school.yaml`（via [Jovanykoch/rules](https://github.com/Jovanykoch/rules)） | 学校/教育域名，每日自动更新 | Clash domain |
+| `loc-cn.yaml`（via [Jovanykoch/rules](https://github.com/Jovanykoch/rules)） | 直连的中国大陆服务域名，每日自动更新 | Clash domain |
 
 ## 配置模板
 

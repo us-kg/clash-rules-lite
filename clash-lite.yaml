@@ -14,9 +14,9 @@
 #   Rule files (us-kg/clash-rules-lite, auto-published via CDN):
 #     proxy-rules.txt     Domains that go through the proxy
 #     direct-rules.txt    Domains that go direct
-#     edu-rules.txt       School & education domains (-> School group, incl. Microsoft 365)
+#     school.yaml (Jovanykoch/rules, daily)   School & education domains (-> School group)
 #     adslite-rules.txt   Lightweight ad/tracker blocklist (~65k)
-#     loc-cn (dmulle12/rules, auto-updated daily)   Mainland China services (-> DIRECT)
+#     loc-cn.yaml (Jovanykoch/rules, daily)   Mainland China services (-> DIRECT)
 # ======================================================================
 
 mixed-port: 7890
@@ -113,11 +113,11 @@ rule-providers:
     url: https://cdn.jsdelivr.net/gh/us-kg/clash-rules-lite@release/direct-rules.txt
     path: ./ruleset/Direct.yaml
     interval: 86400
-  Edu:
+  School:
     type: http
-    behavior: classical
-    url: https://cdn.jsdelivr.net/gh/us-kg/clash-rules-lite@release/edu-rules.txt
-    path: ./ruleset/Edu.yaml
+    behavior: domain
+    url: https://raw.githubusercontent.com/Jovanykoch/rules/rel/school.yaml
+    path: ./ruleset/School.yaml
     interval: 86400
   ADblock:
     type: http
@@ -128,7 +128,7 @@ rule-providers:
   LocCN:
     type: http
     behavior: domain
-    url: https://github.com/dmulle12/rules/raw/rel/loc-cn.yaml
+    url: https://raw.githubusercontent.com/Jovanykoch/rules/rel/loc-cn.yaml
     path: ./ruleset/LocCN.yaml
     interval: 86400
 
@@ -141,7 +141,7 @@ rules:
   # Block ads.
   - RULE-SET,ADblock,ADblock
   # Service groups.
-  - RULE-SET,Edu,School
+  - RULE-SET,School,School
   - RULE-SET,LocCN,DIRECT
   - GEOSITE,apple,DIRECT
   - GEOSITE,telegram,DIRECT

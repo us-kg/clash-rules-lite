@@ -11,8 +11,8 @@ Inspired by [zhanyeye/clash-rules-lite](https://github.com/zhanyeye/clash-rules-
 | `proxy-rules.txt` | Domains that should go through the proxy | Clash classical |
 | `direct-rules.txt` | Domains that go direct | Clash classical |
 | `adslite-rules.txt` | Lightweight ad/tracker blocklist (hagezi PRO mini, ~60k) | Clash classical |
-| `edu-rules.txt` | School & education domains (jjc.edu, lanecc.edu, Microsoft 365, Google Workspace…) | Clash classical |
-| `loc-cn` (via [dmulle12/rules](https://github.com/dmulle12/rules/raw/rel/loc-cn.yaml)) | Mainland China services that go direct, auto-updated daily | Clash domain |
+| `school.yaml` (via [Jovanykoch/rules](https://github.com/Jovanykoch/rules)) | School & education domains, auto-updated daily | Clash domain |
+| `loc-cn.yaml` (via [Jovanykoch/rules](https://github.com/Jovanykoch/rules)) | Mainland China services that go direct, auto-updated daily | Clash domain |
 
 ## Config template
 
