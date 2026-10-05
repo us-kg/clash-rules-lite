@@ -1,0 +1,13 @@
+payload:
+  - DOMAIN-SUFFIX,cn
+  - DOMAIN-KEYWORD,xbox
+  - DOMAIN-KEYWORD,microsoft
+  - DOMAIN-SUFFIX,xboxlive.com
+  - DOMAIN-SUFFIX,gamepass.com
+  - DOMAIN-SUFFIX,home
+  - DOMAIN-SUFFIX,tiktok.com
+  - DOMAIN-SUFFIX,tiktokcdn.com
+  - DOMAIN-SUFFIX,byteoversea.com
+  - DOMAIN-SUFFIX,youtube.com
+  - DOMAIN-SUFFIX,googlevideo.com
+  - DOMAIN-SUFFIX,ytimg.com
