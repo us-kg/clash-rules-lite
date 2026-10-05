@@ -106,8 +106,7 @@ proxy-groups:
     url: http://cp.cloudflare.com/generate_204
     interval: 600
     tolerance: 50
-  - {name: Apple, type: select, proxies: [Proxy, Auto, DIRECT]}
-  - {name: Telegram, type: select, proxies: [Proxy, Auto, DIRECT]}
+  - {name: Final, type: select, proxies: [Proxy, Auto, DIRECT]}
   - {name: School, type: select, proxies: [Proxy, Auto, DIRECT]}
   - {name: BackCN, type: select, proxies: [Proxy, Auto, DIRECT]}
   - {name: ADblock, type: select, proxies: [REJECT, DIRECT]}
@@ -151,10 +150,10 @@ rules:
   # Service groups.
   - RULE-SET,Edu,School
   - RULE-SET,BackCN,BackCN
-  - GEOSITE,apple,Apple
-  - GEOSITE,telegram,Telegram
+  - GEOSITE,apple,DIRECT
+  - GEOSITE,telegram,DIRECT
   # Proxy / direct splits.
   - RULE-SET,Direct,DIRECT
   - GEOSITE,cn,DIRECT
   - GEOIP,CN,DIRECT
-  - MATCH,DIRECT
+  - MATCH,Final
