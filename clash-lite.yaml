@@ -86,16 +86,7 @@ dns:
 # Option B: define proxies manually (examples commented out).
 # Never commit real credentials or subscription URLs to a public repo.
 # ======================================================================
-proxy-providers:
-  Subscription:
-    type: http
-    url: "https://your-subscription-url"   # <-- replace with your own
-    interval: 3600
-    path: ./proxies/subscription.yaml
-    health-check:
-      enable: true
-      interval: 600
-      url: http://cp.cloudflare.com/generate_204
+
 
 # proxies:
   # --- Shadowsocks example ---
@@ -122,12 +113,6 @@ proxy-groups:
 # Rule sets: lightweight, hand-maintained in us-kg/clash-rules-lite.
 # Published to jsDelivr CDN on every push; refresh interval 24h.
 rule-providers:
-  Proxy:
-    type: http
-    behavior: classical
-    url: https://cdn.jsdelivr.net/gh/us-kg/clash-rules-lite@release/proxy-rules.txt
-    path: ./ruleset/Proxy.yaml
-    interval: 86400
   Direct:
     type: http
     behavior: classical
@@ -167,7 +152,6 @@ rules:
   - GEOSITE,apple,Apple
   - GEOSITE,telegram,Telegram
   # Proxy / direct splits.
-  - RULE-SET,Proxy,Proxy
   - RULE-SET,Direct,DIRECT
   - GEOSITE,cn,DIRECT
   - GEOIP,CN,DIRECT
