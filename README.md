@@ -12,7 +12,7 @@ Inspired by [zhanyeye/clash-rules-lite](https://github.com/zhanyeye/clash-rules-
 | `direct-rules.txt` | Domains that go direct | Clash classical |
 | `adslite-rules.txt` | Lightweight ad/tracker blocklist (hagezi PRO mini, ~60k) | Clash classical |
 | `edu-rules.txt` | School & education domains (jjc.edu, lanecc.edu, Microsoft 365, Google Workspace…) | Clash classical |
-| `loc-cn-rules.txt` | Mainland China services that go direct | Clash classical |
+| `loc-cn` (via [dmulle12/rules](https://github.com/dmulle12/rules/raw/rel/loc-cn.yaml)) | Mainland China services that go direct, auto-updated daily | Clash domain |
 
 ## Config template
 

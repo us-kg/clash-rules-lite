@@ -10,7 +10,7 @@
 #     direct-rules.txt    Domains that go direct (TikTok, YouTube…)
 #     edu-rules.txt       School & education domains (-> School group)
 #     adslite-rules.txt   Lightweight ad/tracker blocklist (~65k)
-#     loc-cn-rules.txt    Mainland China services (-> DIRECT)
+#     loc-cn (dmulle12/rules, auto-updated daily)   Mainland China services (-> DIRECT)
 #
 # QUICK START (iOS)
 #   1. In Stash: Settings → Config → Download from URL, paste:
@@ -107,8 +107,8 @@ rule-providers:
     interval: 86400
   LocCN:
     type: http
-    behavior: classical
-    url: https://cdn.jsdelivr.net/gh/us-kg/clash-rules-lite@release/loc-cn-rules.txt
+    behavior: domain
+    url: https://github.com/dmulle12/rules/raw/rel/loc-cn.yaml
     path: ./ruleset/LocCN.yaml
     interval: 86400
 
