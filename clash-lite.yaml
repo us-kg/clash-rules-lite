@@ -106,11 +106,10 @@ proxy-groups:
     url: http://cp.cloudflare.com/generate_204
     interval: 600
     tolerance: 50
-  - {name: Final, type: select, proxies: [Proxy, Auto, DIRECT]}
   - {name: School, type: select, proxies: [Proxy, Auto, DIRECT]}
   - {name: BackCN, type: select, proxies: [Proxy, Auto, DIRECT]}
   - {name: ADblock, type: select, proxies: [REJECT, DIRECT]}
-
+  - {name: Final, type: select, proxies: [Proxy, Auto, DIRECT]}
 # Rule sets: lightweight, hand-maintained in us-kg/clash-rules-lite.
 # Published to jsDelivr CDN on every push; refresh interval 24h.
 rule-providers:
