@@ -134,4 +134,4 @@ rules:
   - RULE-SET,Direct,DIRECT
   - GEOSITE,cn,DIRECT
   - GEOIP,CN,DIRECT
-  - MATCH,final
+  - MATCH,Final
