@@ -86,8 +86,10 @@ dns:
 # Option B: define proxies manually (examples commented out).
 # Never commit real credentials or subscription URLs to a public repo.
 # ======================================================================
-
-
+proxies:
+  - name: "直连"
+    type: direct
+    udp: true
 # proxies:
   # --- Shadowsocks example ---
   # - {name: HK-SS, type: ss, server: YOUR_SERVER, port: 8388,
