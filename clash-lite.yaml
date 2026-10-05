@@ -87,7 +87,7 @@ dns:
 # Never commit real credentials or subscription URLs to a public repo.
 # ======================================================================
 proxies:
-  - name: "直连"
+  - name: "direct"
     type: direct
     udp: true
 # proxies:
