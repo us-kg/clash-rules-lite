@@ -69,8 +69,7 @@ dns:
 # Never commit real credentials or subscription URLs to a public repo.
 # ======================================================================
 
-
-# proxies:
+proxies:
   # --- Shadowsocks example ---
   # - {name: HK-SS, type: ss, server: YOUR_SERVER, port: 8388,
   #    cipher: aes-256-gcm, password: YOUR_PASSWORD, udp: true}
@@ -86,21 +85,13 @@ proxy-groups:
     url: http://cp.cloudflare.com/generate_204
     interval: 600
     tolerance: 50
-  - {name: Apple, type: select, proxies: [Proxy, Auto, DIRECT]}
-  - {name: Telegram, type: select, proxies: [Proxy, Auto, DIRECT]}
-  - {name: School, type: select, proxies: [Proxy, Auto, DIRECT]}
   - {name: BackCN, type: select, proxies: [Proxy, Auto, DIRECT]}
   - {name: ADblock, type: select, proxies: [REJECT, DIRECT]}
+  - {name: Final, type: select, proxies: [Auto, DIRECT]}
 
 # Rule sets: lightweight, hand-maintained in us-kg/clash-rules-lite.
 # Published to jsDelivr CDN on every push; refresh interval 24h.
 rule-providers:
-  Proxy:
-    type: http
-    behavior: classical
-    url: https://cdn.jsdelivr.net/gh/us-kg/clash-rules-lite@release/proxy-rules.txt
-    path: ./ruleset/Proxy.yaml
-    interval: 86400
   Direct:
     type: http
     behavior: classical
@@ -135,13 +126,12 @@ rules:
   # Block ads.
   - RULE-SET,ADblock,ADblock
   # Service groups.
-  - RULE-SET,Edu,School
+  - RULE-SET,Edu,Auto
   - RULE-SET,BackCN,BackCN
-  - GEOSITE,apple,Apple
-  - GEOSITE,telegram,Telegram
+  - GEOSITE,apple,DIRECT
+  - GEOSITE,telegram,DIRECT
   # Proxy / direct splits.
-  - RULE-SET,Proxy,Proxy
   - RULE-SET,Direct,DIRECT
   - GEOSITE,cn,DIRECT
   - GEOIP,CN,DIRECT
-  - MATCH,DIRECT
+  - MATCH,final
